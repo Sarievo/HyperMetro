@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Tests" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-12-03T17:43:51" hostname="MATERIAL" time="0.115">
+  <properties/>
+  <testcase name="start" classname="Tests" time="0.115"/>
+  <system-out><![CDATA[?[1;31m
+Start test 1?[0m
+depot - Owings Mills - Old Court
+Owings Mills - Old Court - Milford Mill
+Old Court - Milford Mill - Reiserstown Plaza
+Milford Mill - Reiserstown Plaza - Rogers Avenue
+Reiserstown Plaza - Rogers Avenue - West Cold Spring
+Rogers Avenue - West Cold Spring - Mondawmin
+West Cold Spring - Mondawmin - Penn North
+Mondawmin - Penn North - Uptown
+Penn North - Uptown - State Center
+Uptown - State Center - Lexington Market
+State Center - Lexington Market - Charles Center
+Lexington Market - Charles Center - Shot Tower/Market Place
+Charles Center - Shot Tower/Market Place - Johns Hopkins Hospital
+Shot Tower/Market Place - Johns Hopkins Hospital - depot
+?[1;31m
+Start test 2?[0m
+?[1;31m
+Start test 3?[0m
+Error! Such a file doesn't exist!
+?[1;31m
+Start test 4?[0m
+depot - Alabinskaya - Rossiyskaya
+Alabinskaya - Rossiyskaya - Moskovskaya
+Rossiyskaya - Moskovskaya - Gagarinskaya
+Moskovskaya - Gagarinskaya - Sportivnaya
+Gagarinskaya - Sportivnaya - Sovetskaya
+Sportivnaya - Sovetskaya - Pobeda
+Sovetskaya - Pobeda - Bezymyanka
+Pobeda - Bezymyanka - Kirovskaya
+Bezymyanka - Kirovskaya - Yungorodok
+Kirovskaya - Yungorodok - depot
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

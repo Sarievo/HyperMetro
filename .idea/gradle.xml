@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="delegatedBuild" value="false" />
+        <option name="testRunner" value="GRADLE" />
+        <option name="distributionType" value="WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleJvm" value="#JAVA_INTERNAL" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/HyperMetro/task" />
+            <option value="$PROJECT_DIR$/HyperMetro/task/build/classes/java" />
+            <option value="$PROJECT_DIR$/HyperMetro/task/build/generated/sources/annotationProcessor/java" />
+            <option value="$PROJECT_DIR$/HyperMetro/task/build/generated/sources/headers/java" />
+            <option value="$PROJECT_DIR$/HyperMetro/task/build/reports/tests" />
+            <option value="$PROJECT_DIR$/HyperMetro/task/build/test-results" />
+            <option value="$PROJECT_DIR$/HyperMetro/task/build/tmp" />
+            <option value="$PROJECT_DIR$/Topics/Comparing dates and time/Don't be late again" />
+            <option value="$PROJECT_DIR$/Topics/Comparing dates and time/Find the latest date-time" />
+            <option value="$PROJECT_DIR$/Topics/Comparing dates and time/Is the date between the two other dates" />
+            <option value="$PROJECT_DIR$/Topics/Comparing dates and time/Theory" />
+            <option value="$PROJECT_DIR$/util" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>
