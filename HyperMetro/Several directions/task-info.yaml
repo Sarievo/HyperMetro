@@ -1,16 +1,5 @@
 type: edu
 files:
-- name: src/metro/Main.java
-  visible: true
-  text: |
-    package metro;
-
-    public class Main {
-        public static void main(String[] args) {
-            System.out.println("Hello, world!");
-        }
-    }
-  learner_created: false
 - name: test/Tests.java
   visible: false
   text: |-
@@ -209,45 +198,6 @@ files:
         }
     }
   learner_created: false
-- name: test/lausanne.json
-  visible: false
-  text: |-
-    {
-      "m1": {
-        "1": "Renes—Gare",
-        "2": "Epenex",
-        "3": "Crochy",
-        "4": "Cerisaie",
-        "5": "Bassenges",
-        "6": "EPFL",
-        "7": "UNL—Sorge",
-        "8": "Mouline",
-        "9": "UNL—Chemberonne",
-        "10": "Bourdonnette",
-        "11": "Melley",
-        "12": "Provence",
-        "13": "Montelly",
-        "14": "Vigie",
-        "15": "Lausanne—Flon"
-      },
-      "m2": {
-        "1": "Croisettes",
-        "2": "Vennes",
-        "3": "Fourmi",
-        "4": "Sallaz",
-        "5": "CHUV",
-        "6": "Ours",
-        "7": "Riponne M.Bejart",
-        "8": "Bessieres",
-        "9": "Lausanne—Flon",
-        "10": "Lausanne Gare CFF",
-        "11": "Grancy",
-        "12": "Delices",
-        "13": "Jourdils",
-        "14": "Ouchy—Olympique"
-      }
-    }
-  learner_created: false
 - name: test/samara.json
   visible: false
   text: |-
@@ -288,6 +238,59 @@ files:
       }
     }
   learner_created: false
+- name: test/lausanne.json
+  visible: false
+  text: |-
+    {
+      "m1": {
+        "1": "Renes—Gare",
+        "2": "Epenex",
+        "3": "Crochy",
+        "4": "Cerisaie",
+        "5": "Bassenges",
+        "6": "EPFL",
+        "7": "UNL—Sorge",
+        "8": "Mouline",
+        "9": "UNL—Chemberonne",
+        "10": "Bourdonnette",
+        "11": "Melley",
+        "12": "Provence",
+        "13": "Montelly",
+        "14": "Vigie",
+        "15": "Lausanne—Flon"
+      },
+      "m2": {
+        "1": "Croisettes",
+        "2": "Vennes",
+        "3": "Fourmi",
+        "4": "Sallaz",
+        "5": "CHUV",
+        "6": "Ours",
+        "7": "Riponne M.Bejart",
+        "8": "Bessieres",
+        "9": "Lausanne—Flon",
+        "10": "Lausanne Gare CFF",
+        "11": "Grancy",
+        "12": "Delices",
+        "13": "Jourdils",
+        "14": "Ouchy—Olympique"
+      }
+    }
+  learner_created: false
+- name: src/metro/Main.java
+  visible: true
+  text: |
+    package metro;
+
+    public class Main {
+        public static void main(String[] args) {
+            System.out.println("Hello, world!");
+        }
+    }
+  learner_created: false
 feedback_link: https://hyperskill.org/projects/120/stages/649/implement#comment
-status: Unchecked
-record: -1
+status: Failed
+feedback:
+  message: Compilation Failed
+  time: Wed, 08 Dec 2021 09:31:05 UTC
+record: 2

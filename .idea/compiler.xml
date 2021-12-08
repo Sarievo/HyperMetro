@@ -11,8 +11,14 @@
       <module name="HyperMetro.HyperMetro-task.main" target="11" />
       <module name="HyperMetro.Topics-Comparing_dates_and_time-Don't_be_late_again.main" target="11" />
       <module name="HyperMetro.Topics-Comparing_dates_and_time-Find_the_latest_date-time.main" target="11" />
+      <module name="HyperMetro.Topics-Comparing_dates_and_time-How_many_date-time_pairs_match_the_range.main" target="11" />
       <module name="HyperMetro.Topics-Comparing_dates_and_time-Is_the_date_between_the_two_other_dates.main" target="11" />
       <module name="HyperMetro.Topics-Comparing_dates_and_time-Theory.main" target="11" />
+      <module name="HyperMetro.Topics-Manipulating_fields_and_methods-Changing_the_account_balance.main" target="11" />
+      <module name="HyperMetro.Topics-Manipulating_fields_and_methods-Field_value.main" target="11" />
+      <module name="HyperMetro.Topics-Manipulating_fields_and_methods-Theory.main" target="11" />
+      <module name="HyperMetro.Topics-Match_results-Extracting_big_numbers_from_a_text.main" target="11" />
+      <module name="HyperMetro.Topics-Match_results-Theory.main" target="11" />
       <module name="HyperMetro.util.main" target="11" />
     </bytecodeTargetLevel>
   </component>

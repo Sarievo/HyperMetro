@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module external.linked.project.id=":Topics-Comparing_dates_and_time-How_many_date-time_pairs_match_the_range" external.linked.project.path="$MODULE_DIR$/../../../../../Topics/Comparing dates and time/How many date-time pairs match the range" external.root.project.path="$MODULE_DIR$/../../../../.." external.system.id="GRADLE" external.system.module.group="HyperMetro" external.system.module.version="unspecified" type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/../../../../../Topics/Comparing dates and time/How many date-time pairs match the range">
+      <excludeFolder url="file://$MODULE_DIR$/../../../../../Topics/Comparing dates and time/How many date-time pairs match the range/.gradle" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../../../Topics/Comparing dates and time/How many date-time pairs match the range/build" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../../../Topics/Comparing dates and time/How many date-time pairs match the range/out" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
