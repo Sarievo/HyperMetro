@@ -17,39 +17,27 @@ import java.util.regex.Pattern;
 public class Main {
 
     static Scanner s = new Scanner(System.in);
+    static Pattern regex = Pattern.compile("[^\\s\"']+|\"([^\"]*)\"|'([^']*)'");
+    static G G;
     static String[] errMsg = {
             "Error! Such a file doesn't exist!",
             "Incorrect file",
             "Invalid command"
     };
-    static List<String> commands = List.of("/add", "/append", "/add-head", "/remove", "/output");
-    static Pattern regex = Pattern.compile("[^\\s\"']+|\"([^\"]*)\"|'([^']*)'");
-    static HashMap<String, LinkedList<String>> lineMap = new HashMap<>();
+    static List<String> commands = List.of(
+            "/add", "/append", "/add-head", "/remove", "/output",
+            "/connect", "/route"
+    );
 
-    static void loadMap(HashMap<String, HashMap<Integer, String>> rawMap) {
-//        rawMap.forEach((entry, value) -> System.out.printf("data of %s: %s\n", entry, value)); // debug only
-        for (String entry : rawMap.keySet()) {
-            HashMap<Integer, String> map = rawMap.get(entry);
-            LinkedList<String> line = new LinkedList<>();
-            // unordered map to ordered linked-list
-            for (int i = 1; i <= map.size(); i++) {
-//                System.out.println("putting " + map.get(i) + "...");
-                line.add(map.get(i));
-            }
-            lineMap.put(entry, line);
-        }
-    }
-
-    public static void main(String[] args)  {
+    public static void main(String[] args) {
         Path path = Paths.get(args[0]);
 
         try (Reader reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)) {
             Gson gson = new Gson();
-            //    static HashMap<String, HashMap<Integer, String>> lineMap;
-            loadMap(gson.fromJson(reader,
-                    new TypeToken<HashMap<String, HashMap<Integer, String>>>(){}.getType()
+            G = new G(gson.fromJson(reader,
+                    new TypeToken<HashMap<String, HashMap<Integer, Station>>>() {
+                    }.getType()
             ));
-
             List<String> params = input();
 
             while (!"/exit".equals(params.get(0))) {
@@ -58,7 +46,6 @@ public class Main {
                     params = input();
                     continue;
                 }
-
                 try {
                     switch (params.get(0)) {
                         case "/add":
@@ -74,12 +61,17 @@ public class Main {
                         case "/output":
                             output(params.get(1));
                             break;
+                        case "/connect":
+                            connect(params.get(1), params.get(2), params.get(3), params.get(4));
+                            break;
+                        case "/route":
+                            route(params.get(1), params.get(2), params.get(3), params.get(4));
+                            break;
                     }
                 } catch (Exception e) {
-//                    e.printStackTrace();  // debug
-                    err(2); // catch any exceptions
+                    e.printStackTrace();  // debug
+//                    err(2); // catch any exceptions
                 }
-
                 params = input();
             }
         } catch (IOException e) {
@@ -87,6 +79,39 @@ public class Main {
         } catch (JsonSyntaxException e) {
             err(1);
         }
+    }
+
+    private static void route(String l1, String s1, String l2, String s2) {
+        Station st = G.findStation(l1, s1);
+        Station ed = G.findStation(l2, s2);
+        BFSUtil.BFS(G, st);
+
+        LinkedList<String> msg = new LinkedList<>();
+
+        String currLine = G.findLineRef(ed.p);
+        while (ed.p != null) {
+            if (currLine.equals(G.findLineRef(ed.p))) {
+                msg.add(ed.name);
+            } else {
+                msg.add(ed.name);
+                msg.add("Transition to line " + currLine);
+                msg.add(ed.name);
+                currLine = G.findLineRef(ed.p);
+            }
+            ed = ed.p;
+        }
+        msg.add(st.name); // ???
+//        BFSUtil.PRINT_PATH(st, ed);
+        while (!msg.isEmpty()) {
+            System.out.println(msg.removeLast());
+        }
+    }
+
+    private static void connect(String l1, String s1, String l2, String s2) {
+        Objects.requireNonNull(G.findStation(l1, s1))
+                .addTransfer(l2, s2); // connect first occurrence
+        Objects.requireNonNull(G.findStation(l2, s2))
+                .addTransfer(l1, s1);
     }
 
     private static List<String> input() {
@@ -104,31 +129,37 @@ public class Main {
         return matchList;
     }
 
-    private static void append(String ref, String station) {
-        lineMap.get(ref).addLast(station);
+    private static void append(String lineRef, String stationRef) {
+        G.V.get(lineRef).addLast(new Station(stationRef));
     }
 
-    private static void addHead(String ref, String station) {
-        lineMap.get(ref).addFirst(station);
+    private static void addHead(String lineRef, String stationRef) {
+        G.V.get(lineRef).addFirst(new Station(stationRef));
     }
 
-    private static void remove(String ref, String station) {
-        lineMap.get(ref).remove(station);
+    private static void remove(String lineRef, String stationRef) {
+        LinkedList<Station> line = G.V.get(lineRef);
+        line.removeIf(s -> stationRef.equals(s.name));
     }
 
-    private static void output(String ref) {
+    private static void output(String lineRef) {
 //        HashMap<Integer, String> lineRef = lineMap.get(ref);
-        LinkedList<String> line = lineMap.get(ref);
+        LinkedList<Station> line = G.V.get(lineRef);
 //        System.out.printf("Fetching %s... %s\n\n", ref, line); // debug only
-        String s1 = "depot", s2 = line.get(0), s3;
-
-        for (int i = 1; i < line.size(); i++) {
-            s3 = line.get(i);
-            System.out.printf("%s - %s - %s\n", s1, s2, s3);
-            s1 = s2;
-            s2 = s3;
+        System.out.println("depot");
+        for (Station s : line) {
+            System.out.println(s);
         }
-        System.out.printf("%s - %s - %s\n", s1, s2, "depot");
+        System.out.println("depot");
+
+//        String s1 = "depot", s2 = line.get(0).getName(), s3;
+//        for (int i = 1; i < line.size(); i++) {
+//            s3 = line.get(i).getName();
+//            System.out.printf("%s - %s - %s\n", s1, s2, s3);
+//            s1 = s2;
+//            s2 = s3;
+//        }
+//        System.out.printf("%s - %s - %s\n", s1, s2, "depot");
     }
 
     static void err(int i) {

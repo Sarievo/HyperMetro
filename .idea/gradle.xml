@@ -26,9 +26,13 @@
             <option value="$PROJECT_DIR$/Topics/Comparing dates and time/Theory" />
             <option value="$PROJECT_DIR$/Topics/Manipulating fields and methods/Changing the account balance" />
             <option value="$PROJECT_DIR$/Topics/Manipulating fields and methods/Field value" />
+            <option value="$PROJECT_DIR$/Topics/Manipulating fields and methods/Invoking a method" />
             <option value="$PROJECT_DIR$/Topics/Manipulating fields and methods/Theory" />
             <option value="$PROJECT_DIR$/Topics/Match results/Extracting big numbers from a text" />
             <option value="$PROJECT_DIR$/Topics/Match results/Theory" />
+            <option value="$PROJECT_DIR$/Topics/Retrieving Class instances/Find the Method" />
+            <option value="$PROJECT_DIR$/Topics/Retrieving Class instances/Retrieve class name" />
+            <option value="$PROJECT_DIR$/Topics/Retrieving Class instances/Theory" />
             <option value="$PROJECT_DIR$/util" />
           </set>
         </option>

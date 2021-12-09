@@ -29,6 +29,7 @@ subprojects {
 
     dependencies {
         testImplementation 'com.github.hyperskill:hs-test:release-SNAPSHOT'
+        implementation 'com.google.code.gson:gson:2.8.9'
     }
 
     configurations.all {

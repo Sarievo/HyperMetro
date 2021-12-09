@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module external.linked.project.id=":Topics-Manipulating_fields_and_methods-Invoking_a_method" external.linked.project.path="$MODULE_DIR$/../../../../../Topics/Manipulating fields and methods/Invoking a method" external.root.project.path="$MODULE_DIR$/../../../../.." external.system.id="GRADLE" external.system.module.group="HyperMetro" external.system.module.version="unspecified" type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/../../../../../Topics/Manipulating fields and methods/Invoking a method">
+      <excludeFolder url="file://$MODULE_DIR$/../../../../../Topics/Manipulating fields and methods/Invoking a method/.gradle" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../../../Topics/Manipulating fields and methods/Invoking a method/build" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../../../Topics/Manipulating fields and methods/Invoking a method/out" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

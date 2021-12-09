@@ -1,40 +1,203 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Tests" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-12-03T17:43:51" hostname="MATERIAL" time="0.115">
+<testsuite name="Tests" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-12-09T15:01:00" hostname="MATERIAL" time="0.25">
   <properties/>
-  <testcase name="start" classname="Tests" time="0.115"/>
+  <testcase name="start" classname="Tests" time="0.25"/>
   <system-out><![CDATA[?[1;31m
 Start test 1?[0m
-depot - Owings Mills - Old Court
-Owings Mills - Old Court - Milford Mill
-Old Court - Milford Mill - Reiserstown Plaza
-Milford Mill - Reiserstown Plaza - Rogers Avenue
-Reiserstown Plaza - Rogers Avenue - West Cold Spring
-Rogers Avenue - West Cold Spring - Mondawmin
-West Cold Spring - Mondawmin - Penn North
-Mondawmin - Penn North - Uptown
-Penn North - Uptown - State Center
-Uptown - State Center - Lexington Market
-State Center - Lexington Market - Charles Center
-Lexington Market - Charles Center - Shot Tower/Market Place
-Charles Center - Shot Tower/Market Place - Johns Hopkins Hospital
-Shot Tower/Market Place - Johns Hopkins Hospital - depot
+> /output "SubwayLink"
+depot
+Owings Mills
+Old Court
+Milford Mill
+Reiserstown Plaza
+Rogers Avenue
+West Cold Spring
+Mondawmin
+Penn North
+Uptown
+State Center
+Lexington Market
+Charles Center
+Shot Tower/Market Place
+Johns Hopkins Hospital
+depot
 ?[1;31m
 Start test 2?[0m
+> /output "m1"
+depot
+Renes—Gare
+Epenex
+Crochy
+Cerisaie
+Bassenges
+EPFL
+UNL—Sorge
+Mouline
+UNL—Chemberonne
+Bourdonnette
+Melley
+Provence
+Montelly
+Vigie
+Lausanne—Flon
+depot
+> /output "m2"
+depot
+Croisettes
+Vennes
+Fourmi
+Sallaz
+CHUV
+Ours
+Riponne M.Bejart
+Bessieres
+Lausanne—Flon
+Lausanne Gare CFF
+Grancy
+Delices
+Jourdils
+Ouchy—Olympique
+depot
 ?[1;31m
 Start test 3?[0m
-Error! Such a file doesn't exist!
+> /append "m1" "Test station 1"
+> /output "m1"
+depot
+Renes—Gare
+Epenex
+Crochy
+Cerisaie
+Bassenges
+EPFL
+UNL—Sorge
+Mouline
+UNL—Chemberonne
+Bourdonnette
+Melley
+Provence
+Montelly
+Vigie
+Lausanne—Flon
+Test station 1
+depot
+> /append "m1" "Test station 2"
+> /output "m1"
+depot
+Renes—Gare
+Epenex
+Crochy
+Cerisaie
+Bassenges
+EPFL
+UNL—Sorge
+Mouline
+UNL—Chemberonne
+Bourdonnette
+Melley
+Provence
+Montelly
+Vigie
+Lausanne—Flon
+Test station 1
+Test station 2
+depot
+> /add-head "m1" "Head"
+> /output "m1"
+depot
+Head
+Renes—Gare
+Epenex
+Crochy
+Cerisaie
+Bassenges
+EPFL
+UNL—Sorge
+Mouline
+UNL—Chemberonne
+Bourdonnette
+Melley
+Provence
+Montelly
+Vigie
+Lausanne—Flon
+Test station 1
+Test station 2
+depot
 ?[1;31m
 Start test 4?[0m
-depot - Alabinskaya - Rossiyskaya
-Alabinskaya - Rossiyskaya - Moskovskaya
-Rossiyskaya - Moskovskaya - Gagarinskaya
-Moskovskaya - Gagarinskaya - Sportivnaya
-Gagarinskaya - Sportivnaya - Sovetskaya
-Sportivnaya - Sovetskaya - Pobeda
-Sovetskaya - Pobeda - Bezymyanka
-Pobeda - Bezymyanka - Kirovskaya
-Bezymyanka - Kirovskaya - Yungorodok
-Kirovskaya - Yungorodok - depot
+Error! Such a file doesn't exist!
+?[1;31m
+Start test 5?[0m
+> /output "Linka A"
+depot
+Nemocnice Motol
+Petriny
+Nadrazi Veleslavin
+Borislavka
+Dejvicka
+Hradcanska
+Malostranska
+Staromestska
+Mustek - Mustek (Linka B)
+Muzeum - Muzeum (Linka C)
+Namesti Miru
+Jiriho z Podebrad
+Flora
+Zelivskeho
+Strasnicka
+Skalka
+Depo Hostivar
+depot
+?[1;31m
+Start test 6?[0m
+> /connect "Linka C" "I.P.Pavlova" "Linka A" "Petriny"
+> /output "Linka A"
+depot
+Nemocnice Motol
+Petriny - I.P.Pavlova (Linka C)
+Nadrazi Veleslavin
+Borislavka
+Dejvicka
+Hradcanska
+Malostranska
+Staromestska
+Mustek - Mustek (Linka B)
+Muzeum - Muzeum (Linka C)
+Namesti Miru
+Jiriho z Podebrad
+Flora
+Zelivskeho
+Strasnicka
+Skalka
+Depo Hostivar
+depot
+?[1;31m
+Start test 7?[0m
+> /route "Linka A" "Petriny" "Linka A" "Flora"
+Petriny
+Nadrazi Veleslavin
+Borislavka
+Dejvicka
+Hradcanska
+Malostranska
+Staromestska
+Mustek
+Muzeum
+Namesti Miru
+Jiriho z Podebrad
+Flora
+?[1;31m
+Start test 8?[0m
+> /route "Linka C" "Vysehrad" "Linka B" "Namesti Republiky"
+Vysehrad
+I.P.Pavlova
+Muzeum
+Transition to line Linka A
+Muzeum
+Mustek
+Transition to line Linka B
+Mustek
+Namesti Republiky
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

@@ -800,6 +800,18 @@ files:
       }
     }
   learner_created: false
-feedback_link: https://hyperskill.org/projects/120/stages/651/implement#comment
-status: Unchecked
-record: -1
+- name: src/metro/BFSUtil.java
+  visible: true
+  learner_created: true
+- name: src/metro/G.java
+  visible: true
+  learner_created: true
+- name: src/metro/Station.java
+  visible: true
+  learner_created: true
+feedback_link: https://hyperskill.org/learn/step/10344#comment
+status: Solved
+feedback:
+  message: Congratulations!
+  time: Thu, 09 Dec 2021 15:01:01 UTC
+record: 4

@@ -484,6 +484,466 @@ files:
       }
     }
   learner_created: false
+- name: test/prague.json
+  visible: false
+  text: |-
+    {
+      "Linka A": {
+        "1": {
+          "name": "Nemocnice Motol" ,
+          "transfer": []
+        } ,
+        "2": {
+          "name": "Petriny" ,
+          "transfer": []
+        } ,
+        "3": {
+          "name": "Nadrazi Veleslavin" ,
+          "transfer": []
+        } ,
+        "4": {
+          "name": "Borislavka" ,
+          "transfer": []
+        } ,
+        "5": {
+          "name": "Dejvicka" ,
+          "transfer": []
+        } ,
+        "6": {
+          "name": "Hradcanska" ,
+          "transfer": []
+        } ,
+        "7": {
+          "name": "Malostranska" ,
+          "transfer": []
+        } ,
+        "8": {
+          "name": "Staromestska" ,
+          "transfer": []
+        } ,
+        "9": {
+          "name": "Mustek" ,
+          "transfer": [
+            {
+              "line": "Linka B" ,
+              "station": "Mustek"
+            }
+          ]
+        } ,
+        "10": {
+          "name": "Muzeum" ,
+          "transfer": [
+            {
+              "line": "Linka C" ,
+              "station": "Muzeum"
+            }
+          ]
+        } ,
+        "11": {
+          "name": "Namesti Miru" ,
+          "transfer": []
+        } ,
+        "12": {
+          "name": "Jiriho z Podebrad" ,
+          "transfer": []
+        } ,
+        "13": {
+          "name": "Flora" ,
+          "transfer": []
+        } ,
+        "14": {
+          "name": "Zelivskeho" ,
+          "transfer": []
+        } ,
+        "15": {
+          "name": "Strasnicka" ,
+          "transfer": []
+        } ,
+        "16": {
+          "name": "Skalka" ,
+          "transfer": []
+        } ,
+        "17": {
+          "name": "Depo Hostivar" ,
+          "transfer": []
+        }
+      } ,
+      "Linka B": {
+        "1": {
+          "name": "Cerny Most" ,
+          "transfer": []
+        } ,
+        "2": {
+          "name": "Rajska zahrada" ,
+          "transfer": []
+        } ,
+        "3": {
+          "name": "Hloubetin" ,
+          "transfer": []
+        } ,
+        "4": {
+          "name": "Kolbenova" ,
+          "transfer": []
+        } ,
+        "5": {
+          "name": "Vysocanska" ,
+          "transfer": []
+        } ,
+        "6": {
+          "name": "Ceskomoravska" ,
+          "transfer": []
+        } ,
+        "7": {
+          "name": "Palmovka" ,
+          "transfer": []
+        } ,
+        "8": {
+          "name": "Invalidovna" ,
+          "transfer": []
+        } ,
+        "9": {
+          "name": "Krizikova" ,
+          "transfer": []
+        } ,
+        "10": {
+          "name": "Florenc" ,
+          "transfer": [
+            {
+              "line": "Linka C" ,
+              "station": "Florenc"
+            }
+          ]
+        } ,
+        "11": {
+          "name": "Namesti Republiky" ,
+          "transfer": []
+        } ,
+        "12": {
+          "name": "Mustek" ,
+          "transfer": [
+            {
+              "line": "Linka B" ,
+              "station": "Mustek"
+            }
+          ]
+        } ,
+        "13": {
+          "name": "Narodni trida" ,
+          "transfer": []
+        } ,
+        "14": {
+          "name": "Karlovo namesti" ,
+          "transfer": []
+        } ,
+        "15": {
+          "name": "Andel" ,
+          "transfer": []
+        } ,
+        "16": {
+          "name": "Smichovske nadrazi" ,
+          "transfer": []
+        } ,
+        "17": {
+          "name": "Radlicka" ,
+          "transfer": []
+        } ,
+        "18": {
+          "name": "Jinonice" ,
+          "transfer": []
+        } ,
+        "19": {
+          "name": "Nove Butovice" ,
+          "transfer": []
+        } ,
+        "20": {
+          "name": "Hurka" ,
+          "transfer": []
+        } ,
+        "21": {
+          "name": "Luziny" ,
+          "transfer": []
+        } ,
+        "22": {
+          "name": "Luka" ,
+          "transfer": []
+        } ,
+        "23": {
+          "name": "Stodulky" ,
+          "transfer": []
+        } ,
+        "24": {
+          "name": "Zlicin" ,
+          "transfer": []
+        }
+      } ,
+      "Linka C": {
+        "1": {
+          "name": "Letnany" ,
+          "transfer": []
+        } ,
+        "2": {
+          "name": "Prosek" ,
+          "transfer": []
+        } ,
+        "3": {
+          "name": "Strizkov" ,
+          "transfer": []
+        } ,
+        "4": {
+          "name": "Ladvi" ,
+          "transfer": []
+        } ,
+        "5": {
+          "name": "Kobylisy" ,
+          "transfer": []
+        } ,
+        "6": {
+          "name": "Nadrazi Holesovice" ,
+          "transfer": []
+        } ,
+        "7": {
+          "name": "Vltavska" ,
+          "transfer": []
+        } ,
+        "8": {
+          "name": "Florenc" ,
+          "transfer": [
+            {
+              "line": "Linka B" ,
+              "station": "Florenc"
+            }
+          ]
+        } ,
+        "9": {
+          "name": "Hlavni nadrazi" ,
+          "transfer": []
+        } ,
+        "10": {
+          "name": "Muzeum" ,
+          "transfer": [
+            {
+              "line": "Linka A" ,
+              "station": "Muzeum"
+            }
+          ]
+        } ,
+        "11": {
+          "name": "I.P.Pavlova" ,
+          "transfer": []
+        } ,
+        "12": {
+          "name": "Vysehrad" ,
+          "transfer": []
+        } ,
+        "13": {
+          "name": "Prazskeho povstani" ,
+          "transfer": []
+        } ,
+        "14": {
+          "name": "Pankrac" ,
+          "transfer": []
+        } ,
+        "15": {
+          "name": "Budejovicka" ,
+          "transfer": []
+        } ,
+        "16": {
+          "name": "Kacerov" ,
+          "transfer": []
+        } ,
+        "17": {
+          "name": "Roztyly" ,
+          "transfer": []
+        } ,
+        "18": {
+          "name": "Chodov" ,
+          "transfer": []
+        } ,
+        "19": {
+          "name": "Opatov" ,
+          "transfer": []
+        } ,
+        "20": {
+          "name": "Haje" ,
+          "transfer": []
+        }
+      }
+    }
+  learner_created: false
+- name: src/metro/BFSUtil.java
+  visible: true
+  text: |
+    package metro;
+
+    import java.util.LinkedList;
+
+    class BFSUtil {
+        static void BFS(G G, Station s) {
+            for (LinkedList<Station> list : G.V.values()) {
+                for (Station station : list) {
+                    station.color = "WHITE";
+                    station.d = Integer.MAX_VALUE;
+                    station.p = null;
+                }
+            }
+            s.color = "GRAY";
+            s.d = 0;
+            s.p = null;
+            LinkedList<Station> Q = new LinkedList<>();
+            ENQUEUE(Q, s);
+            while (!Q.isEmpty()) {
+                Station u = DEQUEUE(Q);
+                G.Adj.get(u).forEach(v -> {
+                    if ("WHITE".equals(v.color)) {
+                        v.color = "GRAY";
+                        v.d = u.d + 1;
+                        v.p = u;
+                        ENQUEUE(Q, v);
+                    }
+                });
+                u.color = "BLACK";
+            }
+        }
+
+        static void ENQUEUE(LinkedList<Station> Q, Station v) {
+            Q.addFirst(v);
+        }
+
+        static Station DEQUEUE(LinkedList<Station> Q) {
+            return Q.removeLast();
+        }
+    //    static void PRINT_PATH(Station s, Station v) {
+    //        if (v == s) {
+    //            System.out.println(s);
+    //        } else if (v.p == null) {
+    //            System.out.printf("No path from %s to %s exists.\n", s, v);
+    //        } else {
+    //            PRINT_PATH(s, v.p);
+    //            System.out.println(v);
+    //        }
+    //    }
+    }
+  learner_created: true
+- name: src/metro/Station.java
+  visible: true
+  text: |
+    package metro;
+
+    import java.util.ArrayList;
+    import java.util.HashMap;
+    import java.util.List;
+
+    class Station {
+        String name;
+        List<HashMap<String, String>> transfer = new ArrayList<>();
+
+        transient String color = "WHITE";
+        transient int d = Integer.MAX_VALUE;
+        transient Station p = null;
+
+        public Station(String name) {
+            this.name = name;
+        }
+
+        public void addTransfer(String ref, String station) {
+            HashMap<String, String> map = new HashMap<>();
+            map.put("station", station);
+            map.put("line", ref);
+            transfer.add(map);
+        }
+
+        @Override
+        public String toString() {
+            if (!transfer.isEmpty()) {
+                StringBuilder description = new StringBuilder();
+                transfer.forEach(x -> description.append(
+                        String.format(" - %s (%s)", x.get("station"), x.get("line"))
+                ));
+                return name + description;
+            }
+            return name;
+        }
+    }
+  learner_created: true
+- name: src/metro/G.java
+  visible: true
+  text: |
+    package metro;
+
+    import java.util.HashMap;
+    import java.util.HashSet;
+    import java.util.LinkedList;
+    import java.util.Set;
+
+    class G {
+        final HashMap<String, LinkedList<Station>> V = new HashMap<>();
+        final HashMap<Station, Set<Station>> Adj = new HashMap<>();
+
+        G(HashMap<String, HashMap<Integer, Station>> rawMap) {
+    //        rawMap.forEach((entry, value) -> System.out.printf("data of %s: %s\n", entry, value.toString())); // debug only
+            for (String entry : rawMap.keySet()) {
+                HashMap<Integer, Station> map = rawMap.get(entry);
+                LinkedList<Station> line = new LinkedList<>();
+                // unordered map to ordered linked-list
+                for (int i = 1; i <= map.size(); i++) {
+    //                System.out.println("putting " + map.get(i) + "...");
+                    line.add(map.get(i));
+                }
+                V.put(entry, line);
+            }
+            initAdj();
+        }
+
+        private void initAdj() {
+            for (LinkedList<Station> list : V.values()) {
+                for (Station v : list) {
+    //                System.out.println("putting " + v + ": " + getAdj(v) + "...");
+                    Adj.put(v, getAdj(v));
+                }
+            }
+        }
+
+        private Set<Station> getAdj(Station node) {
+            Set<Station> adjNodes = new HashSet<>();
+
+            LinkedList<Station> line = V.get(findLineRef(node));
+            int index = line.indexOf(node);
+            if (index > 0) adjNodes.add(line.get(index - 1));
+            if (index < line.size() - 1) adjNodes.add(line.get(index + 1));
+
+            Set<Station> transitions = new HashSet<>();
+            for (Station currAdj : adjNodes) {
+                if (!currAdj.transfer.isEmpty()) {
+                    for (HashMap<String, String> transfer : currAdj.transfer) {
+                        String lineRef = transfer.get("line");
+                        String stationRef = transfer.get("station");
+                        transitions.add(findStation(lineRef, stationRef));
+                    }
+                }
+            }
+            adjNodes.addAll(transitions);
+            return adjNodes;
+        }
+
+        public String findLineRef(Station station) {
+            for (String ref : V.keySet()) {
+                if (V.get(ref).contains(station)) {
+                    return ref;
+                }
+            }
+            return null;
+        }
+
+        public Station findStation(String lineRef, String stationRef) {
+            for (Station s : V.get(lineRef)) {
+                if (stationRef.equals(s.name)) {
+                    return s;
+                }
+            }
+            return null;  // return null if we didn't find any
+        }
+    }
+  learner_created: true
 - name: test/prague_w_time.json
   visible: false
   text: |-
@@ -831,292 +1291,6 @@ files:
       }
     }
   learner_created: false
-- name: test/prague.json
-  visible: false
-  text: |-
-    {
-      "Linka A": {
-        "1": {
-          "name": "Nemocnice Motol" ,
-          "transfer": []
-        } ,
-        "2": {
-          "name": "Petriny" ,
-          "transfer": []
-        } ,
-        "3": {
-          "name": "Nadrazi Veleslavin" ,
-          "transfer": []
-        } ,
-        "4": {
-          "name": "Borislavka" ,
-          "transfer": []
-        } ,
-        "5": {
-          "name": "Dejvicka" ,
-          "transfer": []
-        } ,
-        "6": {
-          "name": "Hradcanska" ,
-          "transfer": []
-        } ,
-        "7": {
-          "name": "Malostranska" ,
-          "transfer": []
-        } ,
-        "8": {
-          "name": "Staromestska" ,
-          "transfer": []
-        } ,
-        "9": {
-          "name": "Mustek" ,
-          "transfer": [
-            {
-              "line": "Linka B" ,
-              "station": "Mustek"
-            }
-          ]
-        } ,
-        "10": {
-          "name": "Muzeum" ,
-          "transfer": [
-            {
-              "line": "Linka C" ,
-              "station": "Muzeum"
-            }
-          ]
-        } ,
-        "11": {
-          "name": "Namesti Miru" ,
-          "transfer": []
-        } ,
-        "12": {
-          "name": "Jiriho z Podebrad" ,
-          "transfer": []
-        } ,
-        "13": {
-          "name": "Flora" ,
-          "transfer": []
-        } ,
-        "14": {
-          "name": "Zelivskeho" ,
-          "transfer": []
-        } ,
-        "15": {
-          "name": "Strasnicka" ,
-          "transfer": []
-        } ,
-        "16": {
-          "name": "Skalka" ,
-          "transfer": []
-        } ,
-        "17": {
-          "name": "Depo Hostivar" ,
-          "transfer": []
-        }
-      } ,
-      "Linka B": {
-        "1": {
-          "name": "Cerny Most" ,
-          "transfer": []
-        } ,
-        "2": {
-          "name": "Rajska zahrada" ,
-          "transfer": []
-        } ,
-        "3": {
-          "name": "Hloubetin" ,
-          "transfer": []
-        } ,
-        "4": {
-          "name": "Kolbenova" ,
-          "transfer": []
-        } ,
-        "5": {
-          "name": "Vysocanska" ,
-          "transfer": []
-        } ,
-        "6": {
-          "name": "Ceskomoravska" ,
-          "transfer": []
-        } ,
-        "7": {
-          "name": "Palmovka" ,
-          "transfer": []
-        } ,
-        "8": {
-          "name": "Invalidovna" ,
-          "transfer": []
-        } ,
-        "9": {
-          "name": "Krizikova" ,
-          "transfer": []
-        } ,
-        "10": {
-          "name": "Florenc" ,
-          "transfer": [
-            {
-              "line": "Linka C" ,
-              "station": "Florenc"
-            }
-          ]
-        } ,
-        "11": {
-          "name": "Namesti Republiky" ,
-          "transfer": []
-        } ,
-        "12": {
-          "name": "Mustek" ,
-          "transfer": [
-            {
-              "line": "Linka B" ,
-              "station": "Mustek"
-            }
-          ]
-        } ,
-        "13": {
-          "name": "Narodni trida" ,
-          "transfer": []
-        } ,
-        "14": {
-          "name": "Karlovo namesti" ,
-          "transfer": []
-        } ,
-        "15": {
-          "name": "Andel" ,
-          "transfer": []
-        } ,
-        "16": {
-          "name": "Smichovske nadrazi" ,
-          "transfer": []
-        } ,
-        "17": {
-          "name": "Radlicka" ,
-          "transfer": []
-        } ,
-        "18": {
-          "name": "Jinonice" ,
-          "transfer": []
-        } ,
-        "19": {
-          "name": "Nove Butovice" ,
-          "transfer": []
-        } ,
-        "20": {
-          "name": "Hurka" ,
-          "transfer": []
-        } ,
-        "21": {
-          "name": "Luziny" ,
-          "transfer": []
-        } ,
-        "22": {
-          "name": "Luka" ,
-          "transfer": []
-        } ,
-        "23": {
-          "name": "Stodulky" ,
-          "transfer": []
-        } ,
-        "24": {
-          "name": "Zlicin" ,
-          "transfer": []
-        }
-      } ,
-      "Linka C": {
-        "1": {
-          "name": "Letnany" ,
-          "transfer": []
-        } ,
-        "2": {
-          "name": "Prosek" ,
-          "transfer": []
-        } ,
-        "3": {
-          "name": "Strizkov" ,
-          "transfer": []
-        } ,
-        "4": {
-          "name": "Ladvi" ,
-          "transfer": []
-        } ,
-        "5": {
-          "name": "Kobylisy" ,
-          "transfer": []
-        } ,
-        "6": {
-          "name": "Nadrazi Holesovice" ,
-          "transfer": []
-        } ,
-        "7": {
-          "name": "Vltavska" ,
-          "transfer": []
-        } ,
-        "8": {
-          "name": "Florenc" ,
-          "transfer": [
-            {
-              "line": "Linka B" ,
-              "station": "Florenc"
-            }
-          ]
-        } ,
-        "9": {
-          "name": "Hlavni nadrazi" ,
-          "transfer": []
-        } ,
-        "10": {
-          "name": "Muzeum" ,
-          "transfer": [
-            {
-              "line": "Linka A" ,
-              "station": "Muzeum"
-            }
-          ]
-        } ,
-        "11": {
-          "name": "I.P.Pavlova" ,
-          "transfer": []
-        } ,
-        "12": {
-          "name": "Vysehrad" ,
-          "transfer": []
-        } ,
-        "13": {
-          "name": "Prazskeho povstani" ,
-          "transfer": []
-        } ,
-        "14": {
-          "name": "Pankrac" ,
-          "transfer": []
-        } ,
-        "15": {
-          "name": "Budejovicka" ,
-          "transfer": []
-        } ,
-        "16": {
-          "name": "Kacerov" ,
-          "transfer": []
-        } ,
-        "17": {
-          "name": "Roztyly" ,
-          "transfer": []
-        } ,
-        "18": {
-          "name": "Chodov" ,
-          "transfer": []
-        } ,
-        "19": {
-          "name": "Opatov" ,
-          "transfer": []
-        } ,
-        "20": {
-          "name": "Haje" ,
-          "transfer": []
-        }
-      }
-    }
-  learner_created: false
-feedback_link: https://hyperskill.org/projects/120/stages/652/implement#comment
+feedback_link: https://hyperskill.org/learn/step/10345#comment
 status: Unchecked
 record: -1

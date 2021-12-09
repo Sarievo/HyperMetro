@@ -288,9 +288,9 @@ files:
         }
     }
   learner_created: false
-feedback_link: https://hyperskill.org/projects/120/stages/649/implement#comment
-status: Failed
+feedback_link: https://hyperskill.org/learn/step/10342#comment
+status: Solved
 feedback:
-  message: Compilation Failed
-  time: Wed, 08 Dec 2021 09:31:05 UTC
+  message: Congratulations!
+  time: Wed, 08 Dec 2021 09:45:06 UTC
 record: 2

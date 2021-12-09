@@ -1,0 +1,28 @@
+type: code
+files:
+- name: src/Main.java
+  visible: true
+  text: |-
+    import java.lang.reflect.InvocationTargetException;
+    import java.lang.reflect.Method;
+
+    class MethodsDemo {
+
+        public static void main(String[] args) {
+            // write your code here
+        }
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/12551#comment
+status: Failed
+feedback:
+  message: |
+    Compilation error
+    Main.java:8: error: cannot find symbol
+                SystemSomeClass.class.getDeclaredMethods()[0].invoke(new SomeClass());
+                ^
+      symbol:   class SystemSomeClass
+      location: class MethodsDemo
+    1 error
+  time: Thu, 09 Dec 2021 15:13:50 UTC
+record: -1

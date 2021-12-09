@@ -1,7 +1,7 @@
 import java.lang.reflect.Field;
 
 final class AccountUtils {
-
+    
     private AccountUtils() { }
 
     public static void increaseBalance(Account account, long amount) {
