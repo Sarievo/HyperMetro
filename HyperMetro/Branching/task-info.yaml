@@ -11,6 +11,429 @@ files:
         }
     }
   learner_created: false
+- name: test/Tests.java
+  visible: false
+  text: |
+    import org.hyperskill.hstest.dynamic.DynamicTest;
+    import org.hyperskill.hstest.stage.StageTest;
+    import org.hyperskill.hstest.testcase.CheckResult;
+    import org.hyperskill.hstest.testing.TestedProgram;
+
+    public class Tests extends StageTest<String> {
+        @DynamicTest(order = 1)
+        CheckResult simpleRouteTest() {
+            TestedProgram main = new TestedProgram();
+            main.start("./test/london.json");
+
+            String output = main.execute("/route \"Waterloo & City line\" \"Waterloo\" \"Waterloo & City line\" \"Bank\"");
+            String[] sOutput = output.trim().split("\n");
+
+            if (sOutput.length != 2) {
+                return CheckResult.wrong("There is an incorrect number of station in the route");
+            }
+
+            if (!sOutput[0].trim().equals("Waterloo") || !sOutput[1].trim().equals("Bank")) {
+                return CheckResult.wrong("There are incorrect stations in the route");
+            }
+
+            return CheckResult.correct();
+        }
+
+        @DynamicTest(order = 2)
+        CheckResult severalLinesRoute() {
+            TestedProgram main = new TestedProgram();
+            main.start("./test/london.json");
+
+            String output = main.execute("/route \"Victoria line\" \"Victoria\" \"Northern line\" \"Oval\"");
+            String[] sOutput = output.toLowerCase().split("\n");
+
+            String[] route = {"Victoria", "Pimlico", "Vauxhall", "Stockwell", "Northern line", "Stockwell", "Oval"};
+
+            if (sOutput.length != route.length) {
+                return CheckResult.wrong("There is an incorrect number of station in the route");
+            }
+
+            if (assertRoute(sOutput, route)) {
+                return CheckResult.wrong("The route is incorrect. Wrong stations were displayed");
+            }
+
+            return CheckResult.correct();
+        }
+
+        @DynamicTest(order = 3)
+        CheckResult severalLines() {
+            TestedProgram main = new TestedProgram();
+            main.start("./test/london.json");
+
+            String output = main.execute("/route \"Victoria line\" \"Green Park\" \"Northern line\" \"Oval\"");
+            String[] sOutput = output.toLowerCase().split("\n");
+
+            String[] route = {"Green Park", "Jubilee line", "Green Park", "Westminster", "Waterloo",
+                "Northern line", "Waterloo", "Kennington", "Oval"};
+
+            if (sOutput.length != route.length) {
+                return CheckResult.wrong("There is an incorrect number of station in the route");
+            }
+
+            if (assertRoute(sOutput, route)) {
+                return CheckResult.wrong("The route is incorrect. Wrong stations were displayed.");
+            }
+
+            return CheckResult.correct();
+        }
+
+        @DynamicTest(order = 4)
+        CheckResult forkTest() {
+            TestedProgram main = new TestedProgram();
+            main.start("./test/london.json");
+
+            String output = main.execute("/route \"Piccadilly line\" \"Heathrow Terminal 5\" " +
+                "\"Piccadilly line\" \"Hounslow West\"");
+            String[] sOutput = output.toLowerCase().split("\n");
+
+            String[] route = {"Heathrow Terminal 5", "Heathrow Terminals 1-2-3", "Hatton Cross", "Hounslow West"};
+
+            if (sOutput.length != route.length) {
+                return CheckResult.wrong("There is an incorrect number of station in the route");
+            }
+
+            if (assertRoute(sOutput, route)) {
+                return CheckResult.wrong("The route is incorrect. Wrong stations were displayed.");
+            }
+
+            return CheckResult.correct();
+        }
+
+        @DynamicTest(order = 5)
+        CheckResult forkTest2() {
+            TestedProgram main = new TestedProgram();
+            main.start("./test/london.json");
+
+            String output = main.execute("/route \"Piccadilly line\" \"Hatton Cross\" " +
+                "\"Piccadilly line\" \"Heathrow Terminal 4\"");
+            String[] sOutput = output.toLowerCase().split("\n");
+
+            String[] route = {"Hatton Cross", "Heathrow Terminal 4"};
+
+            if (sOutput.length != route.length) {
+                return CheckResult.wrong("There is an incorrect number of station in the route");
+            }
+
+            if (assertRoute(sOutput, route)) {
+                return CheckResult.wrong("The route is incorrect. Wrong stations were displayed. The fork was ignored.");
+            }
+
+            return CheckResult.correct();
+        }
+
+        @DynamicTest(order = 6)
+        CheckResult simpleTimeTest() {
+            TestedProgram main = new TestedProgram();
+            main.start("./test/london.json");
+
+            String output = main.execute("/fastest-route \"District line\" \"Richmond\" \"District line\" \"Gunnersbury\"");
+            String[] sOutput = output.toLowerCase().split("\n");
+
+            String[] route = {"Richmond", "Kew Gardens", "Gunnersbury", "12"};
+
+            if (sOutput.length != route.length) {
+                return CheckResult.wrong("Your program printed an incorrect number of stations in the route. Expected 3 stations and the total time!");
+            }
+
+            if (!sOutput[sOutput.length - 1].contains(route[route.length - 1])) {
+                return CheckResult.wrong("The program incorrectly calculates the trip duration.");
+            }
+
+            if (assertRoute(sOutput, route)) {
+                return CheckResult.wrong("The route is incorrect. Wrong stations were displayed.");
+            }
+
+            return CheckResult.correct();
+        }
+
+        @DynamicTest(order = 7)
+        CheckResult advancedTimeTest() {
+            TestedProgram main = new TestedProgram();
+            main.start("./test/london.json");
+
+            String output = main.execute("/fastest-route \"Victoria line\" \"Brixton\" \"Northern line\" \"Angel\"");
+            String[] sOutput = output.toLowerCase().split("\n");
+
+            String[] route = {"Brixton", "Stockwell", "Northern line", "Stockwell", "Oval", "Kennington", "Waterloo",
+                "Waterloo & City line", "Waterloo", "Bank",
+                "Northern line", "Bank", "Moorgate", "Old Street", "Angel", "47"};
+
+            if (sOutput.length != route.length) {
+                return CheckResult.wrong("Your program printed an incorrect number of stations in the route. Expected 9 stations, 3 transitions and the total time!");
+            }
+
+            if (!sOutput[sOutput.length - 1].contains(route[route.length - 1])) {
+                return CheckResult.wrong("The program incorrectly calculates the trip duration. " +
+                    "Maybe the wrong way was chosen.");
+            }
+
+            if (assertRoute(sOutput, route)) {
+                return CheckResult.wrong("The route is incorrect. Wrong stations were displayed. " +
+                    "Maybe the wrong way was chosen.");
+            }
+
+            return CheckResult.correct();
+        }
+
+        boolean assertRoute(String[] stations, String[] correctRoute) {
+            int index = 0;
+            for (String station : stations) {
+                if (!station.toLowerCase().trim().contains(correctRoute[index].toLowerCase())) {
+                    return true;
+                }
+                index++;
+            }
+            return false;
+        }
+    }
+  learner_created: false
+- name: src/metro/BFSUtil.java
+  visible: true
+  text: |
+    package metro;
+
+    import java.util.LinkedList;
+
+    class BFSUtil {
+        static void BFS(G G, Station s) {
+            for (LinkedList<Station> list : G.V.values()) {
+                for (Station v : list) {
+                    v.color = "WHITE";
+                    v.d = Integer.MAX_VALUE;
+                    v.p = null;
+                }
+            }
+            s.color = "GRAY";
+            s.d = 0;
+            s.p = null;
+            LinkedList<Station> Q = new LinkedList<>();
+            ENQUEUE(Q, s);
+            while (!Q.isEmpty()) {
+                Station u = DEQUEUE(Q);
+                G.Adj.get(u).forEach((v, w) -> {
+                    if ("WHITE".equals(v.color)) {
+                        v.color = "GRAY";
+                        v.d = u.d + 1;
+                        v.p = u;
+                        ENQUEUE(Q, v);
+                    }
+                });
+                u.color = "BLACK";
+            }
+        }
+
+        static void ENQUEUE(LinkedList<Station> Q, Station v) {
+            Q.addFirst(v);
+        }
+
+        static Station DEQUEUE(LinkedList<Station> Q) {
+            return Q.removeLast();
+        }
+    //    static void PRINT_PATH(Station s, Station v) {
+    //        if (v == s) {
+    //            System.out.println(s);
+    //        } else if (v.p == null) {
+    //            System.out.printf("No path from %s to %s exists.\n", s, v);
+    //        } else {
+    //            PRINT_PATH(s, v.p);
+    //            System.out.println(v);
+    //        }
+    //    }
+    }
+  learner_created: true
+- name: src/metro/Station.java
+  visible: true
+  text: |-
+    package metro;
+
+    import java.util.ArrayList;
+    import java.util.HashMap;
+    import java.util.List;
+
+    class Station {
+        String name;
+        List<HashMap<String, String>> transfer = new ArrayList<>();
+        int time;
+
+        transient String color;// = "WHITE";
+        transient int d;// = Integer.MAX_VALUE;
+        transient Station p;// = null;
+
+        public Station(String name) {
+            this.name = name;
+        }
+
+        public Station(String name, int time) {
+            this.name = name;
+            this.time = time;
+        }
+
+        public void addTransfer(String ref, String station) {
+            HashMap<String, String> map = new HashMap<>();
+            map.put("station", station);
+            map.put("line", ref);
+            transfer.add(map);
+        }
+
+        @Override
+        public String toString() {
+            if (!transfer.isEmpty()) {
+                StringBuilder description = new StringBuilder();
+                transfer.forEach(x -> description.append(
+                        String.format(" - %s (%s)", x.get("station"), x.get("line"))
+                ));
+                return name + description;
+            }
+            return name;
+        }
+    }
+  learner_created: true
+- name: src/metro/G.java
+  visible: true
+  text: |
+    package metro;
+
+    import java.util.HashMap;
+    import java.util.LinkedList;
+
+    class G {
+        final HashMap<String, LinkedList<Station>> V = new HashMap<>();
+        final HashMap<Station, HashMap<Station, Integer>> Adj = new HashMap<>();
+
+        G(HashMap<String, HashMap<Integer, Station>> rawMap) {
+    //        rawMap.forEach((entry, value) -> System.out.printf("data of %s: %s\n", entry, value.toString())); // debug only
+            for (String entry : rawMap.keySet()) {
+                HashMap<Integer, Station> map = rawMap.get(entry);
+                LinkedList<Station> line = new LinkedList<>();
+                // unordered map to ordered linked-list
+                if (map.get(0) != null) {
+                    for (int i = 0; i < map.size(); i++) {
+                        line.add(map.get(i));
+                    }
+                } else {
+                    for (int i = 1; i <= map.size(); i++) {
+                        line.add(map.get(i)); // normalization
+                    }
+                }
+                V.put(entry, line);
+            }
+            initAdj();
+        }
+
+        private void initAdj() {
+            for (LinkedList<Station> list : V.values()) {
+                for (Station v : list) {
+                    Adj.put(v, getAdj(v));
+                }
+            }
+        }
+
+        private HashMap<Station, Integer> getAdj(Station s) {
+            HashMap<Station, Integer> adjNodes = new HashMap<>();
+    //        System.out.print("\nAssociate " + s + ": \n");
+
+            LinkedList<Station> line = V.get(findLineRef(s));
+            int index = line.indexOf(s);
+            if (index > 0) {
+                Station prev = line.get(index - 1);
+                putAdj(adjNodes, prev, prev.time);
+            }
+            if (index < line.size() - 1) {
+                Station next = line.get(index + 1);
+                putAdj(adjNodes, next, s.time);
+            }
+            return adjNodes;
+        }
+
+        private void putAdj(HashMap<Station, Integer> adjNodes, Station s, int time) {
+            if (!s.transfer.isEmpty()) {
+                for (HashMap<String, String> transfer : s.transfer) {
+                    String lineRef = transfer.get("line");
+                    String stationRef = transfer.get("station");
+                    Station trans = findStation(lineRef, stationRef);
+    //                System.out.printf("Adj, put: %s with %d, (transfer)\n", trans, time + 5);
+                    adjNodes.put(trans, time + 5); // transition takes 5 minutes
+                }
+            }
+
+    //        System.out.printf("Adj, put: %s with %d.\n", s, time);
+            adjNodes.put(s, time);
+        }
+
+
+        public String findLineRef(Station station) {
+            for (String ref : V.keySet()) {
+                if (V.get(ref).contains(station)) {
+                    return ref;
+                }
+            }
+            return null;
+        }
+
+        public Station findStation(String lineRef, String stationRef) {
+            for (Station s : V.get(lineRef)) {
+                if (stationRef.equals(s.name)) {
+                    return s;
+                }
+            }
+            return null;  // return null if we didn't find any
+        }
+    }
+  learner_created: true
+- name: src/metro/SSSFUtil.java
+  visible: true
+  text: |-
+    package metro;
+
+    import java.util.Comparator;
+    //import java.util.HashSet;
+    import java.util.LinkedList;
+    import java.util.PriorityQueue;
+
+    public class SSSFUtil {
+        static void DIJKSTRA(G G, Station s) {
+            INITIALIZE_SINGLE_SOURCE(G, s);
+    //        HashSet<Station> S = new HashSet<>(); // whose final shortest-path weights from the source s have already been determined.
+            PriorityQueue<Station> Q = new PriorityQueue<>(Comparator.comparingInt(v -> v.d));
+            for (LinkedList<Station> list : G.V.values()) Q.addAll(list);
+            while (!Q.isEmpty()) {
+                Station u = Q.poll();
+    //            S.add(u);
+    //            System.out.printf("\nFound %s distance: %s\n", u, u.d);
+                G.Adj.get(u).forEach((v, w)
+                        -> {
+    //                System.out.println("Found Adj-list: " + v + " : " + w);
+                    RELAX(u, v, w, Q);
+                });
+            }
+        }
+
+        static void INITIALIZE_SINGLE_SOURCE(G G, Station s) {
+            for (LinkedList<Station> list : G.V.values()) {
+                for (Station v : list) {
+                    v.d = Integer.MAX_VALUE;
+                    v.p = null;
+                }
+            }
+            s.d = 0;
+        }
+
+        static void RELAX(Station u, Station v, int w, PriorityQueue<Station> Q) {
+            if (v.d > u.d + w) {
+                v.d = u.d + w; // w???
+                v.p = u;
+    //            System.out.printf("Set %s's distance to %s, and parent to %s\n", v, u.d + w, u);
+                Q.remove(v);
+                Q.add(v); // !! reinsert object to the priority queue, very important
+            }
+        }
+    }
+  learner_created: true
 - name: test/london.json
   visible: false
   text: |-
@@ -6997,187 +7420,29 @@ files:
       ]
     }
   learner_created: false
-- name: test/Tests.java
-  visible: false
-  text: |
-    import org.hyperskill.hstest.dynamic.DynamicTest;
-    import org.hyperskill.hstest.stage.StageTest;
-    import org.hyperskill.hstest.testcase.CheckResult;
-    import org.hyperskill.hstest.testing.TestedProgram;
-
-    public class Tests extends StageTest<String> {
-        @DynamicTest(order = 1)
-        CheckResult simpleRouteTest() {
-            TestedProgram main = new TestedProgram();
-            main.start("./test/london.json");
-
-            String output = main.execute("/route \"Waterloo & City line\" \"Waterloo\" \"Waterloo & City line\" \"Bank\"");
-            String[] sOutput = output.trim().split("\n");
-
-            if (sOutput.length != 2) {
-                return CheckResult.wrong("There is an incorrect number of station in the route");
-            }
-
-            if (!sOutput[0].trim().equals("Waterloo") || !sOutput[1].trim().equals("Bank")) {
-                return CheckResult.wrong("There are incorrect stations in the route");
-            }
-
-            return CheckResult.correct();
-        }
-
-        @DynamicTest(order = 2)
-        CheckResult severalLinesRoute() {
-            TestedProgram main = new TestedProgram();
-            main.start("./test/london.json");
-
-            String output = main.execute("/route \"Victoria line\" \"Victoria\" \"Northern line\" \"Oval\"");
-            String[] sOutput = output.toLowerCase().split("\n");
-
-            String[] route = {"Victoria", "Pimlico", "Vauxhall", "Stockwell", "Northern line", "Stockwell", "Oval"};
-
-            if (sOutput.length != route.length) {
-                return CheckResult.wrong("There is an incorrect number of station in the route");
-            }
-
-            if (assertRoute(sOutput, route)) {
-                return CheckResult.wrong("The route is incorrect. Wrong stations were displayed");
-            }
-
-            return CheckResult.correct();
-        }
-
-        @DynamicTest(order = 3)
-        CheckResult severalLines() {
-            TestedProgram main = new TestedProgram();
-            main.start("./test/london.json");
-
-            String output = main.execute("/route \"Victoria line\" \"Green Park\" \"Northern line\" \"Oval\"");
-            String[] sOutput = output.toLowerCase().split("\n");
-
-            String[] route = {"Green Park", "Jubilee line", "Green Park", "Westminster", "Waterloo",
-                "Northern line", "Waterloo", "Kennington", "Oval"};
-
-            if (sOutput.length != route.length) {
-                return CheckResult.wrong("There is an incorrect number of station in the route");
-            }
-
-            if (assertRoute(sOutput, route)) {
-                return CheckResult.wrong("The route is incorrect. Wrong stations were displayed.");
-            }
-
-            return CheckResult.correct();
-        }
-
-        @DynamicTest(order = 4)
-        CheckResult forkTest() {
-            TestedProgram main = new TestedProgram();
-            main.start("./test/london.json");
-
-            String output = main.execute("/route \"Piccadilly line\" \"Heathrow Terminal 5\" " +
-                "\"Piccadilly line\" \"Hounslow West\"");
-            String[] sOutput = output.toLowerCase().split("\n");
-
-            String[] route = {"Heathrow Terminal 5", "Heathrow Terminals 1-2-3", "Hatton Cross", "Hounslow West"};
-
-            if (sOutput.length != route.length) {
-                return CheckResult.wrong("There is an incorrect number of station in the route");
-            }
-
-            if (assertRoute(sOutput, route)) {
-                return CheckResult.wrong("The route is incorrect. Wrong stations were displayed.");
-            }
-
-            return CheckResult.correct();
-        }
-
-        @DynamicTest(order = 5)
-        CheckResult forkTest2() {
-            TestedProgram main = new TestedProgram();
-            main.start("./test/london.json");
-
-            String output = main.execute("/route \"Piccadilly line\" \"Hatton Cross\" " +
-                "\"Piccadilly line\" \"Heathrow Terminal 4\"");
-            String[] sOutput = output.toLowerCase().split("\n");
-
-            String[] route = {"Hatton Cross", "Heathrow Terminal 4"};
-
-            if (sOutput.length != route.length) {
-                return CheckResult.wrong("There is an incorrect number of station in the route");
-            }
-
-            if (assertRoute(sOutput, route)) {
-                return CheckResult.wrong("The route is incorrect. Wrong stations were displayed. The fork was ignored.");
-            }
-
-            return CheckResult.correct();
-        }
-
-        @DynamicTest(order = 6)
-        CheckResult simpleTimeTest() {
-            TestedProgram main = new TestedProgram();
-            main.start("./test/london.json");
-
-            String output = main.execute("/fastest-route \"District line\" \"Richmond\" \"District line\" \"Gunnersbury\"");
-            String[] sOutput = output.toLowerCase().split("\n");
-
-            String[] route = {"Richmond", "Kew Gardens", "Gunnersbury", "12"};
-
-            if (sOutput.length != route.length) {
-                return CheckResult.wrong("Your program printed an incorrect number of stations in the route. Expected 3 stations and the total time!");
-            }
-
-            if (!sOutput[sOutput.length - 1].contains(route[route.length - 1])) {
-                return CheckResult.wrong("The program incorrectly calculates the trip duration.");
-            }
-
-            if (assertRoute(sOutput, route)) {
-                return CheckResult.wrong("The route is incorrect. Wrong stations were displayed.");
-            }
-
-            return CheckResult.correct();
-        }
-
-        @DynamicTest(order = 7)
-        CheckResult advancedTimeTest() {
-            TestedProgram main = new TestedProgram();
-            main.start("./test/london.json");
-
-            String output = main.execute("/fastest-route \"Victoria line\" \"Brixton\" \"Northern line\" \"Angel\"");
-            String[] sOutput = output.toLowerCase().split("\n");
-
-            String[] route = {"Brixton", "Stockwell", "Northern line", "Stockwell", "Oval", "Kennington", "Waterloo",
-                "Waterloo & City line", "Waterloo", "Bank",
-                "Northern line", "Bank", "Moorgate", "Old Street", "Angel", "47"};
-
-            if (sOutput.length != route.length) {
-                return CheckResult.wrong("Your program printed an incorrect number of stations in the route. Expected 9 stations, 3 transitions and the total time!");
-            }
-
-            if (!sOutput[sOutput.length - 1].contains(route[route.length - 1])) {
-                return CheckResult.wrong("The program incorrectly calculates the trip duration. " +
-                    "Maybe the wrong way was chosen.");
-            }
-
-            if (assertRoute(sOutput, route)) {
-                return CheckResult.wrong("The route is incorrect. Wrong stations were displayed. " +
-                    "Maybe the wrong way was chosen.");
-            }
-
-            return CheckResult.correct();
-        }
-
-        boolean assertRoute(String[] stations, String[] correctRoute) {
-            int index = 0;
-            for (String station : stations) {
-                if (!station.toLowerCase().trim().contains(correctRoute[index].toLowerCase())) {
-                    return true;
-                }
-                index++;
-            }
-            return false;
-        }
-    }
-  learner_created: false
 feedback_link: https://hyperskill.org/learn/step/10346#comment
-status: Unchecked
+status: Failed
+feedback:
+  message: |-
+    Wrong answer in test #3
+
+    There is an incorrect number of station in the route
+
+    Please find below the output of your program during this failed test.
+    Note that the &#39;&gt;&#39; character indicates the beginning of the input line.
+
+    ---
+
+    Arguments: ./test/london.json
+
+    &gt; /route &quot;Victoria line&quot; &quot;Green Park&quot; &quot;Northern line&quot; &quot;Oval&quot;
+    Green Park
+    Victoria
+    Pimlico
+    Vauxhall
+    Stockwell
+    Transition to line Northern line
+    Stockwell
+    Oval
+  time: Fri, 10 Dec 2021 13:18:29 UTC
 record: -1

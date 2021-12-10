@@ -20,6 +20,9 @@
       <module name="HyperMetro.Topics-Manipulating_fields_and_methods-Theory.main" target="11" />
       <module name="HyperMetro.Topics-Match_results-Extracting_big_numbers_from_a_text.main" target="11" />
       <module name="HyperMetro.Topics-Match_results-Theory.main" target="11" />
+      <module name="HyperMetro.Topics-Reflection_basics-Declared_fields.main" target="11" />
+      <module name="HyperMetro.Topics-Reflection_basics-Field_count.main" target="11" />
+      <module name="HyperMetro.Topics-Reflection_basics-Theory.main" target="11" />
       <module name="HyperMetro.Topics-Retrieving_Class_instances-Find_the_Method.main" target="11" />
       <module name="HyperMetro.Topics-Retrieving_Class_instances-Retrieve_class_name.main" target="11" />
       <module name="HyperMetro.Topics-Retrieving_Class_instances-Theory.main" target="11" />

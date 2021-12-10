@@ -25,8 +25,8 @@ public class Main {
             "Invalid command"
     };
     static List<String> commands = List.of(
-            "/add", "/append", "/add-head", "/remove", "/output",
-            "/connect", "/route", "/fastest-route"
+//            "/add", "/append", "/add-head", "/remove", "/output", "/connect",
+            "/route", "/fastest-route"
     );
 
     public static void main(String[] args) {
@@ -35,7 +35,8 @@ public class Main {
         try (Reader reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)) {
             Gson gson = new Gson();
             G = new G(gson.fromJson(reader,
-                    new TypeToken<HashMap<String, HashMap<Integer, Station>>>() {}.getType()
+                    new TypeToken<HashMap<String, LinkedList<Station>>>(){}.getType()
+//                    new TypeToken<HashMap<String, HashMap<Integer, Station>>>(){}.getType()
             ));
             List<String> params = input();
 
@@ -47,24 +48,24 @@ public class Main {
                 }
                 try {
                     switch (params.get(0)) {
-                        case "/add":
-                            add(params.get(1), params.get(2), Integer.parseInt(params.get(3)));
-                            break;
-                        case "/append":
-                            append(params.get(1), params.get(2));
-                            break;
-                        case "/add-head":
-                            addHead(params.get(1), params.get(2));
-                            break;
-                        case "/remove":
-                            remove(params.get(1), params.get(2));
-                            break;
-                        case "/output":
-                            output(params.get(1));
-                            break;
-                        case "/connect":
-                            connect(params.get(1), params.get(2), params.get(3), params.get(4));
-                            break;
+//                        case "/add":
+//                            add(params.get(1), params.get(2), Integer.parseInt(params.get(3)));
+//                            break;
+//                        case "/append":
+//                            append(params.get(1), params.get(2));
+//                            break;
+//                        case "/add-head":
+//                            addHead(params.get(1), params.get(2));
+//                            break;
+//                        case "/remove":
+//                            remove(params.get(1), params.get(2));
+//                            break;
+//                        case "/output":
+//                            output(params.get(1));
+//                            break;
+//                        case "/connect":
+//                            connect(params.get(1), params.get(2), params.get(3), params.get(4));
+//                            break;
                         case "/route":
                             route(params.get(1), params.get(2), params.get(3), params.get(4));
                             break;
@@ -125,13 +126,6 @@ public class Main {
         }
     }
 
-    private static void connect(String l1, String s1, String l2, String s2) {
-        Objects.requireNonNull(G.findStation(l1, s1))
-                .addTransfer(l2, s2); // connect first occurrence
-        Objects.requireNonNull(G.findStation(l2, s2))
-                .addTransfer(l1, s1);
-    }
-
     private static List<String> input() {
         List<String> matchList = new ArrayList<>();
         Matcher regexMatcher = regex.matcher(s.nextLine());
@@ -147,42 +141,38 @@ public class Main {
         return matchList;
     }
 
-    private static void add(String lineRef, String stationRef, int time) {
-        G.V.get(lineRef).addLast(new Station(stationRef, time));
-    }
-
-    private static void append(String lineRef, String stationRef) {
-        G.V.get(lineRef).addLast(new Station(stationRef));
-    }
-
-    private static void addHead(String lineRef, String stationRef) {
-        G.V.get(lineRef).addFirst(new Station(stationRef));
-    }
-
-    private static void remove(String lineRef, String stationRef) {
-        LinkedList<Station> line = G.V.get(lineRef);
-        line.removeIf(s -> stationRef.equals(s.name));
-    }
-
-    private static void output(String lineRef) {
-//        HashMap<Integer, String> lineRef = lineMap.get(ref);
-        LinkedList<Station> line = G.V.get(lineRef);
-//        System.out.printf("Fetching %s... %s\n\n", ref, line); // debug only
-        System.out.println("depot");
-        for (Station s : line) {
-            System.out.println(s);
-        }
-        System.out.println("depot");
-
-//        String s1 = "depot", s2 = line.get(0).getName(), s3;
-//        for (int i = 1; i < line.size(); i++) {
-//            s3 = line.get(i).getName();
-//            System.out.printf("%s - %s - %s\n", s1, s2, s3);
-//            s1 = s2;
-//            s2 = s3;
+//    private static void add(String lineRef, String stationRef, int time) {
+//        G.V.get(lineRef).addLast(new Station(stationRef, time));
+//    }
+//
+//    private static void append(String lineRef, String stationRef) {
+//        G.V.get(lineRef).addLast(new Station(stationRef));
+//    }
+//
+//    private static void addHead(String lineRef, String stationRef) {
+//        G.V.get(lineRef).addFirst(new Station(stationRef));
+//    }
+//
+//    private static void remove(String lineRef, String stationRef) {
+//        LinkedList<Station> line = G.V.get(lineRef);
+//        line.removeIf(s -> stationRef.equals(s.name));
+//    }
+//
+//    private static void output(String lineRef) {
+//        LinkedList<Station> line = G.V.get(lineRef);
+//        System.out.println("depot");
+//        for (Station s : line) {
+//            System.out.println(s);
 //        }
-//        System.out.printf("%s - %s - %s\n", s1, s2, "depot");
-    }
+//        System.out.println("depot");
+//    }
+//
+//    private static void connect(String l1, String s1, String l2, String s2) {
+//        Objects.requireNonNull(G.findStation(l1, s1))
+//                .addTransfer(l2, s2); // connect first occurrence
+//        Objects.requireNonNull(G.findStation(l2, s2))
+//                .addTransfer(l1, s1);
+//    }
 
     static void err(int i) {
         System.out.println(errMsg[i]);
