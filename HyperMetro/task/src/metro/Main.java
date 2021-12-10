@@ -26,7 +26,7 @@ public class Main {
     };
     static List<String> commands = List.of(
             "/add", "/append", "/add-head", "/remove", "/output",
-            "/connect", "/route"
+            "/connect", "/route", "/fastest-route"
     );
 
     public static void main(String[] args) {
@@ -35,8 +35,7 @@ public class Main {
         try (Reader reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)) {
             Gson gson = new Gson();
             G = new G(gson.fromJson(reader,
-                    new TypeToken<HashMap<String, HashMap<Integer, Station>>>() {
-                    }.getType()
+                    new TypeToken<HashMap<String, HashMap<Integer, Station>>>() {}.getType()
             ));
             List<String> params = input();
 
@@ -49,6 +48,8 @@ public class Main {
                 try {
                     switch (params.get(0)) {
                         case "/add":
+                            add(params.get(1), params.get(2), Integer.parseInt(params.get(3)));
+                            break;
                         case "/append":
                             append(params.get(1), params.get(2));
                             break;
@@ -67,6 +68,9 @@ public class Main {
                         case "/route":
                             route(params.get(1), params.get(2), params.get(3), params.get(4));
                             break;
+                        case "/fastest-route":
+                            fastestRoute(params.get(1), params.get(2), params.get(3), params.get(4));
+                            break;
                     }
                 } catch (Exception e) {
                     e.printStackTrace();  // debug
@@ -81,24 +85,38 @@ public class Main {
         }
     }
 
+    private static void fastestRoute(String l1, String s1, String l2, String s2) {
+        Station st = G.findStation(l1, s1);
+        Station ed = G.findStation(l2, s2);
+        SSSFUtil.DIJKSTRA(G, st);
+
+        printRt(st, ed);
+        System.out.printf("Total: %d minutes in the way\n", ed.d);
+    }
+
     private static void route(String l1, String s1, String l2, String s2) {
         Station st = G.findStation(l1, s1);
         Station ed = G.findStation(l2, s2);
         BFSUtil.BFS(G, st);
 
+        printRt(st, ed);
+    }
+
+    private static void printRt(Station st, Station ed) {
+        Station tp = ed;
         LinkedList<String> msg = new LinkedList<>();
 
-        String currLine = G.findLineRef(ed.p);
-        while (ed.p != null) {
-            if (currLine.equals(G.findLineRef(ed.p))) {
-                msg.add(ed.name);
+        String currLine = G.findLineRef(tp.p);
+        while (tp.p != null) {
+            if (currLine.equals(G.findLineRef(tp.p))) {
+                msg.add(tp.name);
             } else {
-                msg.add(ed.name);
+                msg.add(tp.name);
                 msg.add("Transition to line " + currLine);
-                msg.add(ed.name);
-                currLine = G.findLineRef(ed.p);
+                msg.add(tp.name);
+                currLine = G.findLineRef(tp.p);
             }
-            ed = ed.p;
+            tp = tp.p;
         }
         msg.add(st.name); // ???
 //        BFSUtil.PRINT_PATH(st, ed);
@@ -127,6 +145,10 @@ public class Main {
             }
         }
         return matchList;
+    }
+
+    private static void add(String lineRef, String stationRef, int time) {
+        G.V.get(lineRef).addLast(new Station(stationRef, time));
     }
 
     private static void append(String lineRef, String stationRef) {

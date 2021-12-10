@@ -5,10 +5,10 @@ import java.util.LinkedList;
 class BFSUtil {
     static void BFS(G G, Station s) {
         for (LinkedList<Station> list : G.V.values()) {
-            for (Station station : list) {
-                station.color = "WHITE";
-                station.d = Integer.MAX_VALUE;
-                station.p = null;
+            for (Station v : list) {
+                v.color = "WHITE";
+                v.d = Integer.MAX_VALUE;
+                v.p = null;
             }
         }
         s.color = "GRAY";
@@ -18,7 +18,7 @@ class BFSUtil {
         ENQUEUE(Q, s);
         while (!Q.isEmpty()) {
             Station u = DEQUEUE(Q);
-            G.Adj.get(u).forEach(v -> {
+            G.Adj.get(u).forEach((v, w) -> {
                 if ("WHITE".equals(v.color)) {
                     v.color = "GRAY";
                     v.d = u.d + 1;

@@ -3,7 +3,7 @@ hyperskill_project:
   ide_files: https://stepik.org/media/attachments/lesson/388955/additional_files.json
   is_template_based: false
   use_ide: true
-update_date: Thu, 09 Dec 2021 12:50:27 UTC
+update_date: Fri, 10 Dec 2021 06:36:41 UTC
 stages:
 - id: 648
   step: 10341
@@ -19,7 +19,7 @@ stages:
   is_completed: true
 - id: 652
   step: 10345
-  is_completed: false
+  is_completed: true
 - id: 653
   step: 10346
   is_completed: false
@@ -99,6 +99,8 @@ topics:
     theory_id: 10982
   - title: The main method
     theory_id: 3489
+  - title: Overloading
+    theory_id: 3525
   - title: Functional decomposition
     theory_id: 10570
   - title: Primitive and reference types
@@ -173,6 +175,8 @@ topics:
     theory_id: 3535
   - title: Instance methods
     theory_id: 3495
+  - title: Multiple constructors
+    theory_id: 3538
   - title: Objects
     theory_id: 4727
   - title: Interface
@@ -183,6 +187,8 @@ topics:
     theory_id: 3599
   - title: Inheritance
     theory_id: 3583
+  - title: The keyword super
+    theory_id: 3588
   - title: Protected modifier
     theory_id: 6692
   - title: Referencing subclass objects

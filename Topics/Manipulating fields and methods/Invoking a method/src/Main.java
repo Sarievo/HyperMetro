@@ -5,7 +5,9 @@ class MethodsDemo {
 
     public static void main(String[] args) {
         try {
-            SystemSomeClass.class.getDeclaredMethods()[0].invoke(new SomeClass());
+            System.out.println(
+                SomeClass.class.getDeclaredMethods()[0].invoke(new SomeClass())
+            );
         } catch (Exception ignored) {}
     }
 }

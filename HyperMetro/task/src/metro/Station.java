@@ -7,13 +7,19 @@ import java.util.List;
 class Station {
     String name;
     List<HashMap<String, String>> transfer = new ArrayList<>();
+    int time;
 
-    transient String color = "WHITE";
-    transient int d = Integer.MAX_VALUE;
-    transient Station p = null;
+    transient String color;// = "WHITE";
+    transient int d;// = Integer.MAX_VALUE;
+    transient Station p;// = null;
 
     public Station(String name) {
         this.name = name;
+    }
+
+    public Station(String name, int time) {
+        this.name = name;
+        this.time = time;
     }
 
     public void addTransfer(String ref, String station) {

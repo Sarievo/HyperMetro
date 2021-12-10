@@ -1,28 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Tests" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-12-09T15:01:00" hostname="MATERIAL" time="0.25">
+<testsuite name="Tests" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-12-10T09:11:43" hostname="MATERIAL" time="0.251">
   <properties/>
-  <testcase name="start" classname="Tests" time="0.25"/>
+  <testcase name="start" classname="Tests" time="0.251"/>
   <system-out><![CDATA[?[1;31m
 Start test 1?[0m
-> /output "SubwayLink"
-depot
-Owings Mills
-Old Court
-Milford Mill
-Reiserstown Plaza
-Rogers Avenue
-West Cold Spring
-Mondawmin
-Penn North
-Uptown
-State Center
-Lexington Market
-Charles Center
-Shot Tower/Market Place
-Johns Hopkins Hospital
-depot
-?[1;31m
-Start test 2?[0m
 > /output "m1"
 depot
 Renes—Gare
@@ -59,7 +40,7 @@ Jourdils
 Ouchy—Olympique
 depot
 ?[1;31m
-Start test 3?[0m
+Start test 2?[0m
 > /append "m1" "Test station 1"
 > /output "m1"
 depot
@@ -124,10 +105,10 @@ Test station 1
 Test station 2
 depot
 ?[1;31m
-Start test 4?[0m
+Start test 3?[0m
 Error! Such a file doesn't exist!
 ?[1;31m
-Start test 5?[0m
+Start test 4?[0m
 > /output "Linka A"
 depot
 Nemocnice Motol
@@ -149,7 +130,7 @@ Skalka
 Depo Hostivar
 depot
 ?[1;31m
-Start test 6?[0m
+Start test 5?[0m
 > /connect "Linka C" "I.P.Pavlova" "Linka A" "Petriny"
 > /output "Linka A"
 depot
@@ -172,7 +153,7 @@ Skalka
 Depo Hostivar
 depot
 ?[1;31m
-Start test 7?[0m
+Start test 6?[0m
 > /route "Linka A" "Petriny" "Linka A" "Flora"
 Petriny
 Nadrazi Veleslavin
@@ -187,7 +168,7 @@ Namesti Miru
 Jiriho z Podebrad
 Flora
 ?[1;31m
-Start test 8?[0m
+Start test 7?[0m
 > /route "Linka C" "Vysehrad" "Linka B" "Namesti Republiky"
 Vysehrad
 I.P.Pavlova
@@ -198,6 +179,32 @@ Mustek
 Transition to line Linka B
 Mustek
 Namesti Republiky
+?[1;31m
+Start test 8?[0m
+> /fastest-route "Linka A" "Borislavka" "Linka A" "Flora"
+Borislavka
+Dejvicka
+Hradcanska
+Malostranska
+Staromestska
+Mustek
+Muzeum
+Namesti Miru
+Jiriho z Podebrad
+Flora
+Total: 44 minutes in the way
+?[1;31m
+Start test 9?[0m
+> /fastest-route "Linka C" "Vysehrad" "Linka B" "Namesti Republiky"
+Vysehrad
+I.P.Pavlova
+Muzeum
+Hlavni nadrazi
+Florenc
+Transition to line Linka B
+Florenc
+Namesti Republiky
+Total: 29 minutes in the way
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

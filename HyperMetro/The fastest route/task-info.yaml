@@ -1291,6 +1291,12 @@ files:
       }
     }
   learner_created: false
+- name: src/metro/SSSFUtil.java
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/learn/step/10345#comment
-status: Unchecked
+status: Solved
+feedback:
+  message: Congratulations!
+  time: Fri, 10 Dec 2021 09:11:44 UTC
 record: -1
