@@ -10,7 +10,7 @@ import java.lang.reflect.Method;
 class FieldGetter {
 
     public int getNumberOfAccessibleFields(Class<?> clazz) {
-        return clazz.getFields().length;
+        // Add implementation here
     }
 
 }

@@ -35,18 +35,22 @@ public class Main {
         try (Reader reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)) {
             Gson gson = new Gson();
             G = new G(gson.fromJson(reader,
-                    new TypeToken<HashMap<String, LinkedList<Station>>>(){}.getType()
-//                    new TypeToken<HashMap<String, HashMap<Integer, Station>>>(){}.getType()
+                    new TypeToken<HashMap<String, LinkedList<Station>>>() {
+                    }.getType()
             ));
             List<String> params = input();
-
-            while (!"/exit".equals(params.get(0))) {
-                if (!commands.contains(params.get(0))) {
-                    err(2);
-                    params = input();
-                    continue;
-                }
+            while (true) {
                 try {
+                    if ("/exit".equals(params.get(0))) {
+                        break;
+                    }
+
+                    if (!commands.contains(params.get(0))) {
+                        err(2);
+                        params = input();
+                        continue;
+                    }
+
                     switch (params.get(0)) {
 //                        case "/add":
 //                            add(params.get(1), params.get(2), Integer.parseInt(params.get(3)));
@@ -86,6 +90,7 @@ public class Main {
         }
     }
 
+
     private static void fastestRoute(String l1, String s1, String l2, String s2) {
         Station st = G.findStation(l1, s1);
         Station ed = G.findStation(l2, s2);
@@ -121,35 +126,6 @@ public class Main {
 
             System.out.println(v.name);
         }
-//        Station tp = ed;
-//        LinkedList<String> msg = new LinkedList<>();
-//
-//        String currLine = G.findLineRef(tp.p);
-//        while (tp.p != null) {
-//            if (currLine.equals(G.findLineRef(tp.p))) {
-//                msg.add(tp.name);
-//            } else {
-//                msg.add(tp.name);
-//                msg.add("Transition to line " + currLine);
-//                msg.add(currLine);
-//                msg.add(tp.name); // ???
-//                currLine = G.findLineRef(tp.p);
-//                for (HashMap<String, String> transfer : tp.transfer) {
-//                    String lineRef = transfer.get("line");
-//                    if (lineRef.equals(G.findLineRef(tp.p))) {
-//                        Station target = G.findStation(lineRef, transfer.get("station"));
-//                        msg.add(target.name);
-//                    }
-//                    break;
-//                }
-//            }
-//            tp = tp.p;
-//        }
-//        msg.add(st.name); // ???
-//        BFSUtil.PRINT_PATH(st, ed);
-//        while (!msg.isEmpty()) {
-//            System.out.println(msg.removeLast());
-//        }
     }
 
     private static List<String> input() {
