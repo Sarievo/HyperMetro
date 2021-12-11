@@ -9,7 +9,8 @@ public class SSSFUtil {
     static void INITIALIZE_SINGLE_SOURCE(G G, Station s) {
         for (LinkedList<Station> list : G.V.values()) {
             for (Station v : list) {
-                v.d = Integer.MAX_VALUE;
+//                v.d = Integer.MAX_VALUE;
+                v.d = 9999;
                 v.p = null;
             }
         }

@@ -45,3 +45,30 @@ Waterloo
 [1;31m
 Start test 6[0m
 J> /fastest-route "District line" "Richmond" "District line" "Gunnersbury"
+
+Richmond
+Kew Gardens
+Gunnersbury
+Total: 12 minutes in the way
+[1;31m
+Start test 7[0m
+C> /fastest-route "Victoria line" "Brixton" "Northern line" "Angel"
+	Brixton
+Stockwell
+Northern line
+Stockwell
+Oval
+Kennington
+
+Waterloo
+Waterloo & City line
+
+Waterloo
+Bank
+Northern line
+Bank
+
+Moorgate
+Old Street
+Angel
+Total: 47 minutes in the way

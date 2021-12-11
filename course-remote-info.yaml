@@ -22,7 +22,7 @@ stages:
   is_completed: true
 - id: 653
   step: 10346
-  is_completed: false
+  is_completed: true
 topics:
   0:
   - title: Write, compile, and run

@@ -91,7 +91,7 @@ public class Main {
         Station ed = G.findStation(l2, s2);
         SSSFUtil.DIJKSTRA(G, st);
 
-//        PRINT_PATH(st, ed);
+        PRINT_PATH(st, ed);
         System.out.printf("Total: %d minutes in the way\n", ed.d);
     }
 
