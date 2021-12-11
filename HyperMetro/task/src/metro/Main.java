@@ -91,7 +91,7 @@ public class Main {
         Station ed = G.findStation(l2, s2);
         SSSFUtil.DIJKSTRA(G, st);
 
-        printRt(st, ed);
+//        PRINT_PATH(st, ed);
         System.out.printf("Total: %d minutes in the way\n", ed.d);
     }
 
@@ -100,30 +100,56 @@ public class Main {
         Station ed = G.findStation(l2, s2);
         BFSUtil.BFS(G, st);
 
-        printRt(st, ed);
+        PRINT_PATH(st, ed);
     }
 
-    private static void printRt(Station st, Station ed) {
-        Station tp = ed;
-        LinkedList<String> msg = new LinkedList<>();
+    private static void PRINT_PATH(Station s, Station v) {
 
-        String currLine = G.findLineRef(tp.p);
-        while (tp.p != null) {
-            if (currLine.equals(G.findLineRef(tp.p))) {
-                msg.add(tp.name);
-            } else {
-                msg.add(tp.name);
-                msg.add("Transition to line " + currLine);
-                msg.add(tp.name);
-                currLine = G.findLineRef(tp.p);
+        if (v == s) {
+            System.out.println(s.name);
+        } else if (v.p == null) {
+            System.out.printf("no path from %s to %s exists\n", s, v);
+        } else {
+            PRINT_PATH(s, v.p);
+
+            String prevLineRef = G.findLineRef(v.p);
+            String currLineRef = G.findLineRef(v);
+            if (!prevLineRef.equals(currLineRef)) {
+                System.out.println(currLineRef);
+                System.out.println(v.p.name);
             }
-            tp = tp.p;
+
+            System.out.println(v.name);
         }
-        msg.add(st.name); // ???
+//        Station tp = ed;
+//        LinkedList<String> msg = new LinkedList<>();
+//
+//        String currLine = G.findLineRef(tp.p);
+//        while (tp.p != null) {
+//            if (currLine.equals(G.findLineRef(tp.p))) {
+//                msg.add(tp.name);
+//            } else {
+//                msg.add(tp.name);
+//                msg.add("Transition to line " + currLine);
+//                msg.add(currLine);
+//                msg.add(tp.name); // ???
+//                currLine = G.findLineRef(tp.p);
+//                for (HashMap<String, String> transfer : tp.transfer) {
+//                    String lineRef = transfer.get("line");
+//                    if (lineRef.equals(G.findLineRef(tp.p))) {
+//                        Station target = G.findStation(lineRef, transfer.get("station"));
+//                        msg.add(target.name);
+//                    }
+//                    break;
+//                }
+//            }
+//            tp = tp.p;
+//        }
+//        msg.add(st.name); // ???
 //        BFSUtil.PRINT_PATH(st, ed);
-        while (!msg.isEmpty()) {
-            System.out.println(msg.removeLast());
-        }
+//        while (!msg.isEmpty()) {
+//            System.out.println(msg.removeLast());
+//        }
     }
 
     private static List<String> input() {

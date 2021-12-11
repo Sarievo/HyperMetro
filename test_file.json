@@ -1,0 +1,128 @@
+{
+  "Sa line": [
+    {
+      "name": "Sa Station",
+      "prev": [
+        "Mio Station",
+        "Sa Station 3"
+      ],
+      "next": [
+        "Sa Station 2"
+      ],
+      "transfer": [],
+      "time": 7
+    },
+    {
+      "name": "Sa Station 2",
+      "prev": [
+        "Sa Station"
+      ],
+      "next": [
+        "Sa Station 3"
+      ],
+      "transfer": [
+        {
+          "line": "Re line",
+          "station": "Re Station 2"
+        },
+        {
+          "line": "Sr line",
+          "station": "Sr Station 2"
+        }
+        ],
+      "time": 2
+    },
+    {
+      "name": "Sa Station 3",
+      "prev": [
+        "Sa Station 2"
+      ],
+      "next": [
+        "Sa Station",
+        "Mio Station 2"
+      ],
+      "transfer": [],
+      "time": 5
+    },
+    {
+      "name": "Mio Station 2",
+      "prev": [
+        "Sa Station 3"
+      ],
+      "next": [
+        "Mio Station"
+      ],
+      "transfer": [],
+      "time": 3
+    },
+    {
+      "name": "Mio Station",
+      "prev": [
+        "Mio Station 2"
+      ],
+      "next": [
+        "Sa Station"
+      ],
+      "transfer": [],
+      "time": 3
+    }
+  ],
+  "Re line": [
+    {
+      "name": "Re Station",
+      "prev": [],
+      "next": [
+        "Re Station 2"
+      ],
+      "transfer": [],
+      "time": 3
+    },
+    {
+      "name": "Re Station 2",
+      "prev": [
+        "Re Station"
+      ],
+      "next": [],
+      "transfer": [
+        {
+          "line": "Sa line",
+          "station": "Sa Station 2"
+        },
+        {
+          "line": "Sr line",
+          "station": "Sr Station 2"
+        }
+      ],
+      "time": null
+    }
+  ],
+  "Sr line": [
+    {
+      "name": "Sr Station",
+      "prev": [],
+      "next": [
+        "Sr Station 2"
+      ],
+      "transfer": [],
+      "time": 1
+    },
+    {
+      "name": "Sr Station 2",
+      "prev": [
+        "Sr Station"
+      ],
+      "next": [],
+      "transfer": [
+        {
+          "line": "Sa line",
+          "station": "Sa Station 2"
+        },
+        {
+          "line": "Re line",
+          "station": "Re Station 2"
+        }
+      ],
+      "time": null
+    }
+  ]
+}

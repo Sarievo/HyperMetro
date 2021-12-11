@@ -15,47 +15,43 @@ class G {
     private void initAdj() {
         for (LinkedList<Station> list : V.values()) {
             for (Station v : list) {
-                Adj.put(v, getAdj(v));
+//                System.out.printf("\nfor %s:\n", v);
+                HashMap<Station, Integer> localAdj = getAdj(v, false);
+
+                if (!v.transfer.isEmpty()) {
+                    for (HashMap<String, String> transfer : v.transfer) {
+                        Station tf = findStation(transfer.get("line"), transfer.get("station"));
+//                        Adj.put(tf, getAdj(tf, true));
+//                        System.out.print("    with transition: ");
+                        localAdj.putAll(getAdj(tf, true));
+                    }
+                }
+                Adj.put(v, localAdj);
+//                System.out.printf("Representation: %s %s\n", v, localAdj);
             }
         }
     }
 
-    private HashMap<Station, Integer> getAdj(Station s) {
+    private HashMap<Station, Integer> getAdj(Station s, Boolean isTransition) {
         HashMap<Station, Integer> adjNodes = new HashMap<>();
-//        System.out.print("\nAssociate " + s + ": \n");
         String lineRef = findLineRef(s);
+
+        int transitionTime = isTransition ? 5 : 0;
 
         for (String stationRef : s.prev) {
             Station prev = findStation(lineRef, stationRef);
-            putAdj(adjNodes, prev, prev.time);
+            adjNodes.put(prev, prev.time + transitionTime);
+//            System.out.printf(" Adj, put: (S <-> %s) with %d min.\n",
+//                    prev, prev.time + transitionTime);
         }
-
         for (String stationRef : s.next) {
             Station next = findStation(lineRef, stationRef);
-            putAdj(adjNodes, next, s.time);
+            adjNodes.put(next, s.time + transitionTime);
+//            System.out.printf(" Adj, put: (S <-> %s) with %d min.\n",
+//                    next, s.time + transitionTime);
         }
         return adjNodes;
     }
-
-    private void putAdj(HashMap<Station, Integer> adjNodes, Station s, int time) {
-        if (!s.transfer.isEmpty()) {
-            putTransition(adjNodes, s, time);
-        }
-
-        adjNodes.put(s, time);
-//        System.out.printf("Adj, put: %s with %d.\n", s, time);
-    }
-
-    private void putTransition(HashMap<Station, Integer> adjNodes, Station s, int time) {
-        for (HashMap<String, String> transfer : s.transfer) {
-            String lineRef = transfer.get("line");
-            String stationRef = transfer.get("station");
-            Station trans = findStation(lineRef, stationRef);
-            adjNodes.put(trans, time + 5); // transition takes 5 minutes
-//            System.out.printf("Adj, put: %s with %d, (transfer)\n", trans, time + 5);
-        }
-    }
-
 
     public String findLineRef(Station station) {
         for (String ref : V.keySet()) {

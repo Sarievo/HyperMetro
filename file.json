@@ -762,8 +762,8 @@
       ],
       "transfer": [
         {
-        "line": "District line",
-        "station": "Ealing Broadway"
+          "line": "District line",
+          "station": "Ealing Broadway"
         }
       ],
       "time": 6
@@ -2278,7 +2278,7 @@
       ],
       "next": [],
       "transfer": [],
-      "time": 5
+      "time": null
     },
     {
       "name": "Ealing Broadway",

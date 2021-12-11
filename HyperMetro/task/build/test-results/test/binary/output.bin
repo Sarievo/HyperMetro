@@ -13,19 +13,35 @@ Victoria
 
 Vauxhall
 Stockwell
-"Transition to line Northern line
+Northern line
 Stockwell
 Oval
 [1;31m
 Start test 3[0m
 => /route "Victoria line" "Green Park" "Northern line" "Oval"
 Green Park
+Jubilee line
+Green Park
+Westminster
 
-Victoria
-	Pimlico
+Waterloo
+Northern line
 
-Vauxhall
-Stockwell
-"Transition to line Northern line
-Stockwell
+Waterloo
+Kennington
 Oval
+[1;31m
+Start test 4[0m
+S> /route "Piccadilly line" "Heathrow Terminal 5" "Piccadilly line" "Hounslow West"
+Heathrow Terminal 5
+Heathrow Terminals 1-2-3
+Hatton Cross
+Hounslow West
+[1;31m
+Start test 5[0m
+R> /route "Piccadilly line" "Hatton Cross" "Piccadilly line" "Heathrow Terminal 4"
+Hatton Cross
+Heathrow Terminal 4
+[1;31m
+Start test 6[0m
+J> /fastest-route "District line" "Richmond" "District line" "Gunnersbury"
